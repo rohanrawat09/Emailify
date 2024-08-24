@@ -12,12 +12,12 @@ passport.serializeUser((user,done) =>{
 
 passport.deserializeUser((id,done) =>{
     User.findById(id).then(user => {
-        done(null,user.id);
+        done(null,user);
     });
 });
 passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSceret,
+    clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true
     }, 
